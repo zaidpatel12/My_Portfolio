@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Zaid Arsalan | Full Stack MERN Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Muhammed Zaid Arsalan, a B.Sc. IT Student and Full Stack MERN Developer building scalable web applications.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        /* --- Root Color Variables & Layout Reset --- */
+        :root {
+            --bg-main: #050505;
+            --bg-secondary: #0D0D0D;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(57, 255, 20, 0.15);
+            --primary-neon: #39FF14;
+            --secondary-neon: #00E676;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --glass-blur: blur(12px);
+            --transition-snappy: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-secondary);
+            border: 2px solid var(--primary-neon);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-neon);
+            box-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        /* Global Reusable Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .id-padding {
+            padding: 100px 0;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-radius: 30px;
+            padding: 30px;
+            transition: var(--transition-snappy);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-neon);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.15);
+        }
+
+        /* Section Title Cyber Aesthetics */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title span {
+            color: var(--primary-neon);
+            text-shadow: 0 0 8px var(--primary-neon);
+        }
+
+        /* --- Interface Elements --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-snappy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--primary-neon);
+            border: 1px solid var(--primary-neon);
+            box-shadow: inset 0 0 0 0 rgba(57, 255, 20, 0.2);
+            border-radius: 20px;
+        }
+        .btn-primary:hover {
+            background: var(--primary-neon);
+            color: var(--bg-main);
+            box-shadow: 0 0 20px var(--primary-neon);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        .btn-secondary:hover {
+            border-color: var(--secondary-neon);
+            color: var(--secondary-neon);
+            box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+        }
+
+        /* JavaScript Ripple Animation Styling */
+        .ripple-element {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect-anim 0.6s linear;
+            background: rgba(57, 255, 20, 0.3);
+            pointer-events: none;
+        }
+        @keyframes ripple-effect-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Mouse Tracking Ambient Background Effect */
+        #mouse-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(57,255,20,0.04) 0%, rgba(0,0,0,0) 70%);
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-neon), var(--secondary-neon));
+            width: 0%;
+            z-index: 1000;
+            box-shadow: 0 0 8px var(--primary-neon);
+        }
+
+        /* Scroll Engine Hidden Animation Presets */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 1. System Preloader Elements --- */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-main);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .loader-content {
+            text-align: center;
+        }
+        .loader-logo {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-shadow: 0 0 15px var(--primary-neon);
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 auto 15px auto;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .loader-progress {
+            width: 0%;
+            height: 100%;
+            background: var(--primary-neon);
+            box-shadow: 0 0 10px var(--primary-neon);
+            transition: width 0.4s linear;
+        }
+        .cyber-loading-text {
+            font-size: 0.75rem;
+            color: var(--primary-neon);
+            letter-spacing: 3px;
+        }
+
+        /* --- 2. Floating Sticky Navbar Architecture --- */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: var(--transition-snappy);
+        }
+        #navbar.scrolled {
+            padding: 15px 50px;
+            background: rgba(13, 13, 13, 0.75);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-logo span {
+            color: var(--primary-neon);
+            animation: flash 1s infinite alternate;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-snappy);
+            position: relative;
+            padding: 5px 0;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-neon);
+            text-shadow: 0 0 8px var(--primary-neon);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-neon);
+            box-shadow: 0 0 8px var(--primary-neon);
+            transition: var(--transition-snappy);
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-toggle {
+            display: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- 3. Cyber Terminal Hero Node --- */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0 50px;
+            overflow: hidden;
+            background: radial-gradient(circle at 80% 20%, rgba(57, 255, 20, 0.03) 0%, transparent 50%);
+        }
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        .glitch-text {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            position: relative;
+            color: var(--text-primary);
+        }
+        .hero-content h3 {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        #typing-text {
+            color: var(--primary-neon);
+            font-weight: 700;
+            border-right: 2px solid var(--primary-neon);
+            padding-right: 5px;
+            animation: blink-cursor 0.75s step-end infinite;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 650px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+        .scroll-down p {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+        }
+        .mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 12px;
+            position: relative;
+        }
+        .wheel {
+            width: 4px;
+            height: 8px;
+            background: var(--primary-neon);
+            border-radius: 2px;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: mouse-scroll 1.5s infinite;
+        }
+
+        /* --- 4. About System Layout --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+            border-radius: 20px;
+        }
+        .about-text p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .about-text strong {
+            color: var(--primary-neon);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+        .stat-card {
+            text-align: center;
+            position: relative;
+        }
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--primary-neon);
+            margin-bottom: 15px;
+        }
+        .stat-icon.spinning {
+            animation: rotate-system 4s linear infinite;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- 5. Core Skill Metrics Matrix --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .skills-category h3 {
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 12px;
+        }
+        .skills-category h3 i {
+            color: var(--primary-neon);
+        }
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .skill-list li {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .skill-list span {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary-neon), var(--primary-neon));
+            box-shadow: 0 0 8px var(--primary-neon);
+            width: 0%; 
+            border-radius: 2px;
+            transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- 6. Live Engineering Engagements (Projects) --- */
+        .projects-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .status-badge {
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--primary-neon);
+            color: var(--primary-neon);
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .project-main-icon {
+            font-size: 2rem;
+            color: var(--text-secondary);
+        }
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .project-tagline {
+            color: var(--primary-neon);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .project-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        .project-milestones {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .milestone-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .milestone-col h4 i.done { color: var(--primary-neon); }
+        .milestone-col h4 i.pending { color: #FFC107; }
+        .milestone-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .milestone-col li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 15px;
+        }
+        .milestone-col li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--primary-neon);
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        /* --- 7. Timeline Node System (Education) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-neon), transparent);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -41px;
+            top: 35px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-main);
+            border: 2px solid var(--primary-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-neon);
+        }
+        .timeline-date {
+            color: var(--primary-neon);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .institution {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        .timeline-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* --- 8. Journey Vectors Mapping (Learning Journey) --- */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .journey-card {
+            text-align: center;
+            padding: 35px 20px;
+        }
+        .journey-icon {
+            font-size: 2.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            transition: var(--transition-snappy);
+        }
+        .journey-card:hover .journey-icon {
+            color: var(--primary-neon);
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px var(--primary-neon));
+        }
+        .journey-card h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* --- 9. Async Reactive Contact Form --- */
+        .contact-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            outline: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition-snappy);
+        }
+        .input-group textarea {
+            resize: none;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.15);
+        }
+        .input-group label {
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            color: var(--text-secondary);
+            pointer-events: none;
+            transition: 0.25s ease all;
+            font-size: 0.9rem;
+        }
+        /* Float label handling logic */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label,
+        .input-group textarea:focus ~ label,
+        .input-group textarea:not(:placeholder-shown) ~ label {
+            top: -10px;
+            left: 12px;
+            font-size: 0.75rem;
+            background: var(--bg-secondary);
+            padding: 2px 8px;
+            color: var(--primary-neon);
+            font-weight: 600;
+        }
+        .form-feedback {
+            font-size: 0.9rem;
+            margin-top: -10px;
+            border-radius: 4px;
+            padding: 0 5px;
+            font-weight: 500;
+        }
+        .form-feedback.success { color: var(--secondary-neon); }
+        .form-feedback.error { color: #FF3333; }
+
+        /* --- 10. Footer Nodes --- */
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-socials a {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition-snappy);
+            background: rgba(255, 255, 255, 0.01);
+        }
+        .footer-socials a:hover {
+            color: var(--primary-neon);
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 12px var(--primary-neon);
+        }
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: -60px;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--primary-neon);
+            color: var(--primary-neon);
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+            transition: right 0.4s ease, transform 0.3s;
+        }
+        #back-to-top.visible { right: 30px; }
+        #back-to-top:hover {
+            background: var(--primary-neon);
+            color: var(--bg-main);
+            box-shadow: 0 0 15px var(--primary-neon);
+        }
+
+        /* --- Global Animations System --- */
+        @keyframes flash {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        @keyframes blink-cursor {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-neon); }
+        }
+        @keyframes mouse-scroll {
+            0% { top: 6px; opacity: 1; }
+            100% { top: 22px; opacity: 0; }
+        }
+        @keyframes rotate-system {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- System Responsiveness Breakpoints --- */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .glitch-text { font-size: 3rem; }
+            #navbar { padding: 20px 30px; }
+            #navbar.scrolled { padding: 12px 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 260px;
+                height: calc(100vh - 70px);
+                background: rgba(13, 13, 13, 0.98);
+                backdrop-filter: var(--glass-blur);
+                -webkit-backdrop-filter: var(--glass-blur);
+                flex-direction: column;
+                padding: 40px 30px;
+                gap: 30px;
+                transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                border-left: 1px solid var(--card-border);
+            }
+            .nav-links.active { right: 0; }
+            .glitch-text { font-size: 2.4rem; }
+            .hero-content h3 { font-size: 1.4rem; }
+            .project-milestones { grid-template-columns: 1fr; gap: 20px; }
+            .id-padding { padding: 70px 0; }
+            .section-title { font-size: 2rem; margin-bottom: 35px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div id="mouse-glow"></div>
+
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">ZP</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="cyber-loading-text">INITIALIZING SYSTEM...</p>
+        </div>
+    </div>
+
+    <header id="navbar">
+        <a href="#home" class="nav-logo">ZP<span>_</span></a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section scroll-reveal">
+            <div class="hero-content">
+                <h2 class="glitch-text">ZAID PATEL</h2>
+                <h3>I am a <span id="typing-text"></span></h3>
+                <p>B.Sc. Information Technology Honors Student with a deep passion for constructing highly scalable, modern web architectures and continuously mastering emerging technologies.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary ripple">Download Resume <i class="fas fa-download"></i></a>
+                    <a href="#contact" class="btn btn-secondary ripple">Contact Me <i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="scroll-down">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <p>SCROLL DOWN</p>
+            </div>
+        </section>
+
+        <section id="about" class="about-section id-padding scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">About_Me<span>()</span></h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Hello! I am a dedicated software developer specialized in architecting application frameworks utilizing the <strong>MERN Stack</strong>. My target focuses heavily on building optimized backend structures, integrating secure RESTful APIs, and implementing seamless database layers using MongoDB.</p>
+                        <p>Driven by logic, I enjoy solving deep system architecture puzzles, diving into Cloud Computing spaces, and maintaining a workflow anchored in continuous professional growth.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card">
+                            <i class="fas fa-graduation-cap stat-icon"></i>
+                            <h4 class="stat-number" data-target="8">0</h4>
+                            <p class="stat-label">Tech Tools Tracking</p>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <i class="fas fa-spinner stat-icon spinning"></i>
+                            <h4 class="stat-number" data-target="1">0</h4>
+                            <p class="stat-label">Major Projects Live</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section id-padding scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Core_Skills<span>[]</span></h2>
+                <div class="skills-grid">
+                    <div class="skills-category glass-card">
+                        <h3><i class="fas fa-laptop-code"></i> Frontend Stack</h3>
+                        <ul class="skill-list">
+                            <li><span>HTML5</span> <div class="progress-bar"><div class="progress" data-width="95%"></div></div></li>
+                            <li><span>CSS3 / Flexbox / Grid</span> <div class="progress-bar"><div class="progress" data-width="90%"></div></div></li>
+                            <li><span>Vanilla JavaScript (ES6+)</span> <div class="progress-bar"><div class="progress" data-width="85%"></div></div></li>
+                        </ul>
+                    </div>
+                    <div class="skills-category glass-card">
+                        <h3><i class="fas fa-code-branch"></i> Backend & Framework Track</h3>
+                        <ul class="skill-list">
+                            <li><span>React (Learning)</span> <div class="progress-bar"><div class="progress" data-width="60%"></div></div></li>
+                            <li><span>Node.js / Express.js</span> <div class="progress-bar"><div class="progress" data-width="70%"></div></div></li>
+                            <li><span>MongoDB Database Layer</span> <div class="progress-bar"><div class="progress" data-width="75%"></div></div></li>
+                        </ul>
+                    </div>
+                    <div class="skills-category glass-card">
+                        <h3><i class="fas fa-terminal"></i> Program Logic</h3>
+                        <ul class="skill-list">
+                            <li><span>Java Core Architecture</span> <div class="progress-bar"><div class="progress" data-width="80%"></div></div></li>
+                            <li><span>C++ Structural Programming</span> <div class="progress-bar"><div class="progress" data-width="75%"></div></div></li>
+                        </ul>
+                    </div>
+                    <div class="skills-category glass-card">
+                        <h3><i class="fas fa-tools"></i> Developer Toolbelt</h3>
+                        <ul class="skill-list">
+                            <li><span>Git & GitHub Workflows</span> <div class="progress-bar"><div class="progress" data-width="85%"></div></div></li>
+                            <li><span>VS Code Development Environment</span> <div class="progress-bar"><div class="progress" data-width="90%"></div></div></li>
+                            <li><span>Postman API Testing Execution</span> <div class="progress-bar"><div class="progress" data-width="80%"></div></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section id-padding scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Current_Engagements<span>{}</span></h2>
+                <div class="projects-container">
+                    <div class="project-card glass-card">
+                        <div class="project-header">
+                            <span class="status-badge"><i class="fas fa-wrench"></i> Under Development</span>
+                            <i class="fas fa-shopping-basket project-main-icon"></i>
+                        </div>
+                        <h3>B2B E-Commerce Platform</h3>
+                        <p class="project-tagline">Connecting Wholesalers & Local Retailers Securely</p>
+                        <p class="project-desc">Building an enterprise-ready wholesale B2B ecosystem featuring custom algorithmic operational modules and fine-grained access rules control layout schemes.</p>
+                        
+                        <div class="project-milestones">
+                            <div class="milestone-col">
+                                <h4><i class="fas fa-check-circle done"></i> Completed</h4>
+                                <ul>
+                                    <li> Secure Authentication </li>
+                                    <li>Granular Wholesaler/Shopkeeper User Roles</li>
+                                    <li>Comprehensive Master Admin Structural Dashboard</li>
+                                </ul>
+                            </div>
+                            <div class="milestone-col">
+                                <h4><i class="fas fa-clock pending"></i> Roadmap Priority</h4>
+                                <ul>
+                                    <li>High-Throughput Product Management</li>
+                                    <li>Transactional Flow & Order Pipelines</li>
+                                    <li>Integrated Secure Payment Gateways</li>
+                                    <li>Real-time Analytical Visualization Maps</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="btn btn-secondary ripple" target="_blank"><i class="fab fa-github"></i> Inspect Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="education-section id-padding scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Academic_Timeline<span>()</span></h2>
+                <div class="timeline">
+                    <div class="timeline-item glass-card">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Active Academic Stream</div>
+                        <h3>B.Sc. Information Technology (Honors)</h3>
+                        <p class="institution">University Level Degree Framework</p>
+                        <p>Engaged in critical computing algorithms, database schemas, object-oriented principles, and information security paradigms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="journey-section id-padding scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Continuous_Expansion<span>_&gt;</span></h2>
+                <div class="journey-grid">
+                    <div class="journey-card glass-card">
+                        <div class="journey-icon"><i class="fab fa-react"></i></div>
+                        <h4>React</h4>
+                    </div>
+                    <div class="journey-card glass-card">
+                        <div class="journey-icon"><i class="fab fa-node-js"></i></div>
+                        <h4>Node.js / Express </h4>
+                    </div>
+                    <div class="journey-card glass-card">
+                        <div class="journey-icon"><i class="fas fa-database"></i></div>
+                        <h4>Advanced MongoDB Collections & Indexing</h4>
+                    </div>
+                    <div class="journey-card glass-card">
+                        <div class="journey-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <h4>Secure REST APIs Design Frameworks</h4>
+                    </div>
+                    <div class="journey-card glass-card">
+                        <div class="journey-icon"><i class="fab fa-docker"></i></div>
+                        <h4>Docker Microservice Containerization</h4>
+                    </div>
+                    <div class="journey-card glass-card">
+                        <div class="journey-icon"><i class="fas fa-cloud"></i></div>
+                        <h4>Cloud Computing Scalable Deployments</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section id-padding scroll-reveal">
+    <div class="container">
+        <h2 class="section-title">Contact Me<span>()</span></h2>
+        <div class="contact-wrapper">
+            <form id="contact-form" class="glass-card">
+
+                <div class="input-group">
+                    <input type="text" id="name" name="user_name" required placeholder=" ">
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="user_email" required placeholder=" ">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="subject" name="msg_subject" required placeholder=" ">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="input-group">
+                    <textarea id="message" name="user_message" required rows="5" placeholder=" "></textarea>
+                    <label for="message">Message</label>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn btn-primary ripple">
+                    <span class="btn-text">Send</span>
+                    <div class="btn-spinner" style="display: none; margin-left: 8px;">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                    </div>
+                </button>
+                <div id="form-feedback" class="form-feedback"></div>
+
+            </form>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-socials">
+                <a href="#" class="ripple" target="_blank" aria-label="GitHub Portal"><i class="fab fa-github"></i></a>
+                <a href="#" class="ripple" target="_blank" aria-label="LinkedIn Network Link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:your-email@gmail.com" class="ripple" aria-label="Direct Email Node"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 ZAID PATEL// ALL RIGHTS RESERVED SYSTEM CORRIDORS</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="ripple" aria-label="Return to Hero Hub"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // --- 0. Encapsulated Environment Configuration Block ---
+        const CYBER_CONFIG = {
+            EMAILJS_PUBLIC_KEY: "TKsNHqECcC9Fh7vzc",
+            EMAILJS_SERVICE_ID: "service_61q9dyq",
+            EMAILJS_TEMPLATE_ID: "template_i6rznxl"
+        };
+        Object.freeze(CYBER_CONFIG);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Initialize EmailJS Engine if credentials have been replaced
+            if (typeof emailjs !== "undefined" && CYBER_CONFIG.EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
+                emailjs.init(CYBER_CONFIG.EMAILJS_PUBLIC_KEY);
+            }
+
+            // --- 1. System Preloader Processing Pipeline ---
+            const loader = document.getElementById("loader");
+            const loaderProgress = document.querySelector(".loader-progress");
+            
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 5;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        loader.style.opacity = "0";
+                        setTimeout(() => { loader.style.display = "none"; }, 500);
+                        initializeStatsCounter(); 
+                    }, 400);
+                }
+                loaderProgress.style.width = `${progress}%`;
+            }, 60);
+
+            // --- 2. Ambient Mouse Coordinates Monitor ---
+            const mouseGlow = document.getElementById("mouse-glow");
+            document.addEventListener("mousemove", (e) => {
+                mouseGlow.style.left = `${e.clientX}px`;
+                mouseGlow.style.top = `${e.clientY}px`;
+            });
+
+            // --- 3. Scroll Progress Bar Monitor ---
+            const progressBar = document.getElementById("scroll-progress");
+            window.addEventListener("scroll", () => {
+                const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+                if (totalScroll > 0) {
+                    const percentage = (window.scrollY / totalScroll) * 100;
+                    progressBar.style.width = `${percentage}%`;
+                }
+            });
+
+            // --- 4. Adaptive Mobile Toggle Navigation Engine ---
+            const navbar = document.getElementById("navbar");
+            const navToggle = document.getElementById("nav-toggle");
+            const navLinksContainer = document.querySelector(".nav-links");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+
+            navToggle.addEventListener("click", () => {
+                navLinksContainer.classList.toggle("active");
+                const icon = navToggle.querySelector("i");
+                icon.classList.toggle("fa-bars");
+                icon.classList.toggle("fa-times");
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinksContainer.classList.remove("active");
+                    const icon = navToggle.querySelector("i");
+                    icon.classList.add("fa-bars");
+                    icon.classList.remove("fa-times");
+                });
+            });
+
+            // --- 5. Intersect Viewport Link Active Class Relocator ---
+            const sections = document.querySelectorAll("section");
+            window.addEventListener("scroll", () => {
+                let currentSectionId = "";
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (window.scrollY >= sectionTop) {
+                        currentSectionId = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${currentSectionId}`) {
+                        link.classList.add("active");
+                    }
+                });
+            });
+
+            // --- 6. Terminal Output Automatic Typist Loop ---
+            const typingSpan = document.getElementById("typing-text");
+            const phrases = [
+                "Full Stack MERN Developer.", 
+                "B.Sc. IT Honors Student.", 
+                "Continuous Learner."
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeSpeed = 100;
+
+            function processTypingLoop() {
+                const currentFullText = phrases[phraseIndex];
+                if (isDeleting) {
+                    typingSpan.textContent = currentFullText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typeSpeed = 40;
+                } else {
+                    typingSpan.textContent = currentFullText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typeSpeed = 100;
+                }
+
+                if (!isDeleting && charIndex === currentFullText.length) {
+                    typeSpeed = 2000; 
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = 400; 
+                }
+
+                setTimeout(processTypingLoop, typeSpeed);
+            }
+            setTimeout(processTypingLoop, 1500);
+
+            // --- 7. Native DOM Custom Pointer Ripple Event Injector ---
+            const rippleButtons = document.querySelectorAll(".ripple");
+            rippleButtons.forEach(btn => {
+                btn.addEventListener("click", function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement("span");
+                    ripple.className = "ripple-element";
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+
+                    this.appendChild(ripple);
+                    setTimeout(() => { ripple.remove(); }, 600);
+                });
+            });
+
+            // --- 8. Statistics Metric Counter Incrementor ---
+            function initializeStatsCounter() {
+                const statNumbers = document.querySelectorAll(".stat-number");
+                statNumbers.forEach(num => {
+                    const target = parseInt(num.getAttribute("data-target"), 10);
+                    let count = 0;
+                    const step = target / 50; 
+                    
+                    const countInterval = setInterval(() => {
+                        count += step;
+                        if (count >= target) {
+                            num.textContent = target.toLocaleString() + (target === 8 || target === 1 ? "+" : "");
+                            clearInterval(countInterval);
+                        } else {
+                            num.textContent = Math.floor(count).toLocaleString();
+                        }
+                    }, 30);
+                });
+            }
+
+            // --- 9. Intersection Observer (Scroll Reveal + Skills Loading) ---
+            const revealElements = document.querySelectorAll(".scroll-reveal");
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        
+                        // Fire specialized progress animations if skills container becomes visible
+                        if (entry.target.id === "skills") {
+                            const progressBars = entry.target.querySelectorAll(".progress");
+                            progressBars.forEach(bar => {
+                                const targetWidth = bar.getAttribute("data-width");
+                                bar.style.width = targetWidth;
+                            });
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- 10. Back to Top Interface Adjustments ---
+            const backToTopBtn = document.getElementById("back-to-top");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 600) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            });
+            backToTopBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            // --- 11. Secure Asynchronous Mail Payload Transmission Engine ---
+            const contactForm = document.getElementById("contact-form");
+            const submitBtn = document.getElementById("submit-btn");
+            const btnText = submitBtn.querySelector(".btn-text");
+            const btnSpinner = submitBtn.querySelector(".btn-spinner");
+            const formFeedback = document.getElementById("form-feedback");
+
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+               
+
+                // Configuration verification safety guard
+                if (CYBER_CONFIG.EMAILJS_PUBLIC_KEY === "YOUR_EMAILJS_PUBLIC_KEY") {
+                    formFeedback.className = "form-feedback error";
+                    formFeedback.textContent = "Transmission Fault: Missing parameters inside inner configuration variables.";
+                    return;
+                }
+
+                // Update button states to loader animation
+                submitBtn.disabled = true;
+                btnText.style.opacity = "0.5";
+                btnSpinner.style.display = "inline-block";
+                formFeedback.textContent = "";
+
+                // Send via EmailJS SDK
+                emailjs.sendForm(
+                    CYBER_CONFIG.EMAILJS_SERVICE_ID,
+                    CYBER_CONFIG.EMAILJS_TEMPLATE_ID,
+                    contactForm
+                )
+                .then(() => {
+                    formFeedback.className = "form-feedback success";
+                    formFeedback.textContent = "Your messages has been sended";
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error("Transmission Error:", error);
+                    formFeedback.className = "form-feedback error";
+                    formFeedback.textContent = "Error";
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    btnText.style.opacity = "1";
+                    btnSpinner.style.display = "none";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
