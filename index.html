@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammed Zaid Arsalan | Full Stack MERN Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Muhammed Zaid Arsalan, a B.Sc. IT Student and Full Stack MERN Developer building scalable web applications.">
+    <title>ZAID PATEL | Full Stack MERN Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Zaid Patel, a B.Sc. IT Student and Full Stack MERN Developer building scalable web applications.">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -66,7 +66,7 @@
         }
 
         .id-padding {
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .glass-card {
@@ -74,7 +74,7 @@
             border: 1px solid var(--card-border);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 30px;
             transition: var(--transition-snappy);
         }
@@ -87,8 +87,8 @@
 
         /* Section Title Cyber Aesthetics */
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
@@ -103,14 +103,15 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            padding: 14px 28px;
-            font-size: 0.95rem;
+            padding: 12px 24px;
+            font-size: 0.9rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 20px;
             cursor: pointer;
             transition: var(--transition-snappy);
             position: relative;
@@ -121,8 +122,6 @@
             background: transparent;
             color: var(--primary-neon);
             border: 1px solid var(--primary-neon);
-            box-shadow: inset 0 0 0 0 rgba(57, 255, 20, 0.2);
-            border-radius: 20px;
         }
         .btn-primary:hover {
             background: var(--primary-neon);
@@ -134,7 +133,6 @@
             background: rgba(255, 255, 255, 0.05);
             color: var(--text-primary);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
         }
         .btn-secondary:hover {
             border-color: var(--secondary-neon);
@@ -182,8 +180,8 @@
         /* Scroll Engine Hidden Animation Presets */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .scroll-reveal.visible {
             opacity: 1;
@@ -202,9 +200,10 @@
         }
         .loader-content {
             text-align: center;
+            padding: 20px;
         }
         .loader-logo {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--text-primary);
             text-shadow: 0 0 15px var(--primary-neon);
@@ -212,7 +211,8 @@
             margin-bottom: 20px;
         }
         .loader-bar {
-            width: 200px;
+            width: 100%;
+            max-width: 200px;
             height: 2px;
             background: rgba(255, 255, 255, 0.1);
             margin: 0 auto 15px auto;
@@ -238,22 +238,23 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 25px 50px;
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
             transition: var(--transition-snappy);
-        }
-        #navbar.scrolled {
-            padding: 15px 50px;
-            background: rgba(13, 13, 13, 0.75);
+            background: rgba(5, 5, 5, 0.6);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
+        }
+        #navbar.scrolled {
+            padding: 12px 24px;
+            background: rgba(13, 13, 13, 0.85);
             border-bottom: 1px solid var(--card-border);
         }
         .nav-logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--text-primary);
             text-decoration: none;
@@ -266,12 +267,12 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 24px;
         }
         .nav-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -306,29 +307,28 @@
 
         /* --- 3. Cyber Terminal Hero Node --- */
         .hero-section {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            padding: 0 50px;
             overflow: hidden;
             background: radial-gradient(circle at 80% 20%, rgba(57, 255, 20, 0.03) 0%, transparent 50%);
+            padding-top: 80px;
         }
         .hero-content {
-            max-width: 800px;
+            width: 100%;
             position: relative;
             z-index: 2;
         }
         .glitch-text {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
             letter-spacing: -1px;
             margin-bottom: 10px;
-            position: relative;
             color: var(--text-primary);
         }
-        .hero-content h3 {
-            font-size: 2rem;
+        .hero-section h3 {
+            font-size: clamp(1.2rem, 3vw, 2rem);
             color: var(--text-secondary);
             margin-bottom: 25px;
             font-weight: 400;
@@ -341,35 +341,36 @@
             animation: blink-cursor 0.75s step-end infinite;
         }
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.15rem);
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 40px;
             max-width: 650px;
         }
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 16px;
         }
         .scroll-down {
             position: absolute;
-            bottom: 40px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             z-index: 2;
         }
         .scroll-down p {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 2px;
             color: var(--text-secondary);
         }
         .mouse {
-            width: 24px;
-            height: 40px;
+            width: 22px;
+            height: 36px;
             border: 2px solid var(--text-secondary);
             border-radius: 12px;
             position: relative;
@@ -390,14 +391,13 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
-            border-radius: 20px;
         }
         .about-text p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
         .about-text strong {
@@ -421,13 +421,13 @@
             animation: rotate-system 4s linear infinite;
         }
         .stat-number {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 5px;
             color: var(--text-primary);
         }
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -436,12 +436,12 @@
         /* --- 5. Core Skill Metrics Matrix --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
         .skills-category h3 {
-            font-size: 1.25rem;
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
             color: var(--text-primary);
             display: flex;
             align-items: center;
@@ -456,7 +456,7 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
         }
         .skill-list li {
             display: flex;
@@ -464,13 +464,13 @@
             gap: 8px;
         }
         .skill-list span {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
             font-weight: 500;
         }
         .progress-bar {
             width: 100%;
-            height: 4px;
+            height: 5px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 2px;
             overflow: hidden;
@@ -492,12 +492,13 @@
         .project-card {
             position: relative;
             overflow: hidden;
-            border-radius: 30px;
         }
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
             margin-bottom: 20px;
         }
         .status-badge {
@@ -519,7 +520,7 @@
             color: var(--text-secondary);
         }
         .project-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 6px;
             letter-spacing: 0.5px;
         }
@@ -531,21 +532,21 @@
         }
         .project-desc {
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
             margin-bottom: 30px;
         }
         .project-milestones {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 24px;
             margin-bottom: 35px;
             background: rgba(0, 0, 0, 0.2);
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.02);
         }
         .milestone-col h4 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
@@ -594,12 +595,12 @@
         }
         .timeline-item {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .timeline-dot {
             position: absolute;
             left: -41px;
-            top: 35px;
+            top: 32px;
             width: 20px;
             height: 20px;
             background: var(--bg-main);
@@ -609,7 +610,7 @@
         }
         .timeline-date {
             color: var(--primary-neon);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -618,7 +619,7 @@
         .institution {
             color: var(--text-primary);
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 12px;
         }
         .timeline-item p {
@@ -629,15 +630,15 @@
         /* --- 8. Journey Vectors Mapping (Learning Journey) --- */
         .journey-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
         .journey-card {
             text-align: center;
-            padding: 35px 20px;
+            padding: 30px 20px;
         }
         .journey-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--text-secondary);
             margin-bottom: 15px;
             transition: var(--transition-snappy);
@@ -648,7 +649,7 @@
             filter: drop-shadow(0 0 8px var(--primary-neon));
         }
         .journey-card h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-primary);
             font-weight: 600;
         }
@@ -661,7 +662,7 @@
         #contact-form {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 24px;
         }
         .input-group {
             position: relative;
@@ -672,7 +673,7 @@
             padding: 16px;
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 4px;
+            border-radius: 6px;
             outline: none;
             color: var(--text-primary);
             font-size: 1rem;
@@ -732,11 +733,11 @@
         }
         .footer-socials {
             display: flex;
-            gap: 20px;
+            gap: 16px;
         }
         .footer-socials a {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             display: flex;
@@ -744,7 +745,7 @@
             align-items: center;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition-snappy);
             background: rgba(255, 255, 255, 0.01);
         }
@@ -754,21 +755,22 @@
             box-shadow: 0 0 12px var(--primary-neon);
         }
         .copyright {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             letter-spacing: 1px;
+            line-height: 1.4;
         }
 
         #back-to-top {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             right: -60px;
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             background: var(--bg-secondary);
             border: 1px solid var(--primary-neon);
             color: var(--primary-neon);
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             z-index: 99;
             display: flex;
@@ -777,7 +779,7 @@
             box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
             transition: right 0.4s ease, transform 0.3s;
         }
-        #back-to-top.visible { right: 30px; }
+        #back-to-top.visible { right: 20px; }
         #back-to-top:hover {
             background: var(--primary-neon);
             color: var(--bg-main);
@@ -804,41 +806,43 @@
         /* --- System Responsiveness Breakpoints --- */
         @media (max-width: 992px) {
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .glitch-text { font-size: 3rem; }
-            #navbar { padding: 20px 30px; }
-            #navbar.scrolled { padding: 12px 30px; }
+            #navbar { padding: 15px 24px; }
+            #navbar.scrolled { padding: 12px 24px; }
+            .id-padding { padding: 60px 0; }
         }
 
         @media (max-width: 768px) {
             .nav-toggle { display: block; }
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 0;
                 right: -100%;
                 width: 260px;
-                height: calc(100vh - 70px);
+                height: 100vh;
                 background: rgba(13, 13, 13, 0.98);
                 backdrop-filter: var(--glass-blur);
                 -webkit-backdrop-filter: var(--glass-blur);
                 flex-direction: column;
-                padding: 40px 30px;
-                gap: 30px;
+                padding: 100px 30px 40px 30px;
+                gap: 24px;
                 transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                 border-left: 1px solid var(--card-border);
+                z-index: 99;
             }
             .nav-links.active { right: 0; }
-            .glitch-text { font-size: 2.4rem; }
-            .hero-content h3 { font-size: 1.4rem; }
+            .nav-toggle {
+                position: relative;
+                z-index: 100;
+            }
             .project-milestones { grid-template-columns: 1fr; gap: 20px; }
-            .id-padding { padding: 70px 0; }
-            .section-title { font-size: 2rem; margin-bottom: 35px; }
+            .section-title { font-size: 1.8rem; margin-bottom: 30px; }
+            .scroll-down { display: none; }
         }
     </style>
 </head>
 <body>
 
     <div id="scroll-progress"></div>
-
     <div id="mouse-glow"></div>
 
     <div id="loader">
@@ -871,13 +875,15 @@
 
     <main>
         <section id="home" class="hero-section scroll-reveal">
-            <div class="hero-content">
-                <h2 class="glitch-text">ZAID PATEL</h2>
-                <h3>I am a <span id="typing-text"></span></h3>
-                <p>B.Sc. Information Technology Honors Student with a deep passion for constructing highly scalable, modern web architectures and continuously mastering emerging technologies.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary ripple">Download Resume <i class="fas fa-download"></i></a>
-                    <a href="#contact" class="btn btn-secondary ripple">Contact Me <i class="fas fa-envelope"></i></a>
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="glitch-text">ZAID PATEL</h2>
+                    <h3>I am a <span id="typing-text"></span></h3>
+                    <p>B.Sc. Information Technology Honors Student with a deep passion for constructing highly scalable, modern web architectures and continuously mastering emerging technologies.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary ripple">Download Resume <i class="fas fa-download"></i></a>
+                        <a href="#contact" class="btn btn-secondary ripple">Contact Me <i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="scroll-down">
@@ -907,7 +913,6 @@
                             <h4 class="stat-number" data-target="1">0</h4>
                             <p class="stat-label">Major Projects Live</p>
                         </div>
-                       
                     </div>
                 </div>
             </div>
@@ -969,7 +974,7 @@
                             <div class="milestone-col">
                                 <h4><i class="fas fa-check-circle done"></i> Completed</h4>
                                 <ul>
-                                    <li> Secure Authentication </li>
+                                    <li>Secure Authentication</li>
                                     <li>Granular Wholesaler/Shopkeeper User Roles</li>
                                     <li>Comprehensive Master Admin Structural Dashboard</li>
                                 </ul>
@@ -1017,63 +1022,61 @@
                     </div>
                     <div class="journey-card glass-card">
                         <div class="journey-icon"><i class="fab fa-node-js"></i></div>
-                        <h4>Node.js / Express </h4>
+                        <h4>Node.js / Express</h4>
                     </div>
                     <div class="journey-card glass-card">
                         <div class="journey-icon"><i class="fas fa-database"></i></div>
-                        <h4>Advanced MongoDB Collections & Indexing</h4>
+                        <h4>Advanced MongoDB Collections</h4>
                     </div>
                     <div class="journey-card glass-card">
                         <div class="journey-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                        <h4>Secure REST APIs Design Frameworks</h4>
+                        <h4>Secure REST APIs Frameworks</h4>
                     </div>
                     <div class="journey-card glass-card">
                         <div class="journey-icon"><i class="fab fa-docker"></i></div>
-                        <h4>Docker Microservice Containerization</h4>
+                        <h4>Docker Microservices</h4>
                     </div>
                     <div class="journey-card glass-card">
                         <div class="journey-icon"><i class="fas fa-cloud"></i></div>
-                        <h4>Cloud Computing Scalable Deployments</h4>
+                        <h4>Cloud Scalable Deployments</h4>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="contact-section id-padding scroll-reveal">
-    <div class="container">
-        <h2 class="section-title">Contact Me<span>()</span></h2>
-        <div class="contact-wrapper">
-            <form id="contact-form" class="glass-card">
+            <div class="container">
+                <h2 class="section-title">Contact Me<span>()</span></h2>
+                <div class="contact-wrapper">
+                    <form id="contact-form" class="glass-card">
+                        <div class="input-group">
+                            <input type="text" id="name" name="user_name" required placeholder=" ">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" name="user_email" required placeholder=" ">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="subject" name="msg_subject" required placeholder=" ">
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" name="user_message" required rows="5" placeholder=" "></textarea>
+                            <label for="message">Message</label>
+                        </div>
 
-                <div class="input-group">
-                    <input type="text" id="name" name="user_name" required placeholder=" ">
-                    <label for="name">Name</label>
+                        <button type="submit" id="submit-btn" class="btn btn-primary ripple">
+                            <span class="btn-text">Send</span>
+                            <div class="btn-spinner" style="display: none; margin-left: 8px;">
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                            </div>
+                        </button>
+                        <div id="form-feedback" class="form-feedback"></div>
+                    </form>
                 </div>
-                <div class="input-group">
-                    <input type="email" id="email" name="user_email" required placeholder=" ">
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="subject" name="msg_subject" required placeholder=" ">
-                    <label for="subject">Subject</label>
-                </div>
-                <div class="input-group">
-                    <textarea id="message" name="user_message" required rows="5" placeholder=" "></textarea>
-                    <label for="message">Message</label>
-                </div>
-
-                <button type="submit" id="submit-btn" class="btn btn-primary ripple">
-                    <span class="btn-text">Send</span>
-                    <div class="btn-spinner" style="display: none; margin-left: 8px;">
-                        <i class="fas fa-circle-notch fa-spin"></i>
-                    </div>
-                </button>
-                <div id="form-feedback" class="form-feedback"></div>
-
-            </form>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -1083,15 +1086,14 @@
                 <a href="#" class="ripple" target="_blank" aria-label="LinkedIn Network Link"><i class="fab fa-linkedin-in"></i></a>
                 <a href="mailto:your-email@gmail.com" class="ripple" aria-label="Direct Email Node"><i class="fas fa-envelope"></i></a>
             </div>
-            <p class="copyright">&copy; 2026 ZAID PATEL// ALL RIGHTS RESERVED SYSTEM CORRIDORS</p>
+            <p class="copyright">&copy; 2026 ZAID PATEL // ALL RIGHTS RESERVED SYSTEM CORRIDORS</p>
         </div>
     </footer>
 
     <button id="back-to-top" class="ripple" aria-label="Return to Hero Hub"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // --- 0. Encapsulated Environment Configuration Block ---
-        const CYBER_CONFIG = {
+       const CYBER_CONFIG = {
             EMAILJS_PUBLIC_KEY: "TKsNHqECcC9Fh7vzc",
             EMAILJS_SERVICE_ID: "service_61q9dyq",
             EMAILJS_TEMPLATE_ID: "template_i6rznxl"
@@ -1100,7 +1102,6 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             
-            // Initialize EmailJS Engine if credentials have been replaced
             if (typeof emailjs !== "undefined" && CYBER_CONFIG.EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
                 emailjs.init(CYBER_CONFIG.EMAILJS_PUBLIC_KEY);
             }
@@ -1272,7 +1273,6 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add("visible");
                         
-                        // Fire specialized progress animations if skills container becomes visible
                         if (entry.target.id === "skills") {
                             const progressBars = entry.target.querySelectorAll(".progress");
                             progressBars.forEach(bar => {
@@ -1283,7 +1283,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.1 });
 
             revealElements.forEach(el => revealObserver.observe(el));
 
@@ -1310,22 +1310,17 @@
             contactForm.addEventListener("submit", (e) => {
                 e.preventDefault();
 
-               
-
-                // Configuration verification safety guard
                 if (CYBER_CONFIG.EMAILJS_PUBLIC_KEY === "YOUR_EMAILJS_PUBLIC_KEY") {
                     formFeedback.className = "form-feedback error";
                     formFeedback.textContent = "Transmission Fault: Missing parameters inside inner configuration variables.";
                     return;
                 }
 
-                // Update button states to loader animation
                 submitBtn.disabled = true;
                 btnText.style.opacity = "0.5";
                 btnSpinner.style.display = "inline-block";
                 formFeedback.textContent = "";
 
-                // Send via EmailJS SDK
                 emailjs.sendForm(
                     CYBER_CONFIG.EMAILJS_SERVICE_ID,
                     CYBER_CONFIG.EMAILJS_TEMPLATE_ID,
@@ -1333,13 +1328,13 @@
                 )
                 .then(() => {
                     formFeedback.className = "form-feedback success";
-                    formFeedback.textContent = "Your messages has been sended";
+                    formFeedback.textContent = "Your message has been sent successfully!";
                     contactForm.reset();
                 })
                 .catch((error) => {
                     console.error("Transmission Error:", error);
                     formFeedback.className = "form-feedback error";
-                    formFeedback.textContent = "Error";
+                    formFeedback.textContent = "Error transmitting message. Please try again later.";
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
